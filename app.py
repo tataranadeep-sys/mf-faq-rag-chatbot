@@ -87,9 +87,13 @@ def chatbot(question):
         "Last updated from sources: 2026"
     )
 
-question = st.text_input("Ask a question about mutual funds")
+with st.form("question_form", clear_on_submit=True):
 
-if question:
+    question = st.text_input("Ask a question about mutual funds")
+
+    submit = st.form_submit_button("Ask")
+
+if submit and question:
 
     answer = chatbot(question)
 
