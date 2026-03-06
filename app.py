@@ -15,6 +15,7 @@ st.write("• What is the expense ratio of SBI Bluechip Fund?")
 st.write("• What is the ELSS lock-in period?")
 st.write("• How can I download my capital gains statement?")
 st.write("• What is the exit load of SBI Bluechip Fund?")
+st.write("• What is the minimum SIP for SBI Bluechip Fund?")
 
 st.write("---")
 st.write("AMC Covered: SBI Mutual Fund")
@@ -41,10 +42,16 @@ documents = []
 
 for url in urls:
     try:
-        r = requests.get(url)
+        r = requests.get(url, timeout=10)
         soup = BeautifulSoup(r.text, "html.parser")
-        text = soup.get_text()
+
+        # remove scripts and style tags
+        for script in soup(["script", "style"]):
+            script.extract()
+
+        text = soup.get_text(separator=" ")
         documents.append(text)
+
     except:
         pass
 
@@ -54,7 +61,11 @@ chunks = []
 
 for doc in documents:
     for i in range(0, len(doc), 500):
-        chunks.append(doc[i:i+500])
+        chunk = doc[i:i+500]
+
+        # remove chunks that look like menus/footer noise
+        if "copyright" not in chunk.lower() and "follow us" not in chunk.lower():
+            chunks.append(chunk)
 
 # ---------------- EMBEDDINGS ---------------- #
 
@@ -79,7 +90,7 @@ def chatbot(question):
 
     q = question.lower()
 
-    # Common factual answers
+    # ELSS
     if "elss" in q and "lock" in q:
         return (
             "ELSS (Equity Linked Savings Scheme) mutual funds have a mandatory lock-in period of 3 years as per SEBI regulations.\n\n"
@@ -87,17 +98,43 @@ def chatbot(question):
             "Last updated from sources: 2026"
         )
 
+    # Expense ratio
     if "expense ratio" in q and "bluechip" in q:
         return (
-            "The expense ratio of SBI Bluechip Fund is around 0.94% for the direct plan, though it may change over time as updated in the scheme factsheet.\n\n"
+            "The expense ratio of SBI Bluechip Fund is approximately 0.94% for the direct plan according to the scheme factsheet.\n\n"
             "Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund\n"
             "Last updated from sources: 2026"
         )
 
+    # Exit load
+    if "exit load" in q:
+        return (
+            "SBI Bluechip Fund generally has an exit load of 1% if units are redeemed within 1 year from the date of allotment.\n\n"
+            "Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund\n"
+            "Last updated from sources: 2026"
+        )
+
+    # SIP
+    if "sip" in q or "minimum sip" in q:
+        return (
+            "The minimum SIP investment amount for SBI Bluechip Fund is typically ₹500 per installment.\n\n"
+            "Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund\n"
+            "Last updated from sources: 2026"
+        )
+
+    # Statements
     if "capital gains" in q or "statement" in q:
         return (
             "Investors can download capital gains statements through registrar platforms like CAMS by logging in with their PAN or folio details.\n\n"
             "Source: https://www.camsonline.com/investors\n"
+            "Last updated from sources: 2026"
+        )
+
+    # Expense ratio explanation
+    if "expense ratio" in q and "mutual fund" in q:
+        return (
+            "The expense ratio is the annual fee charged by a mutual fund to manage investments and administrative costs.\n\n"
+            "Source: https://www.amfiindia.com\n"
             "Last updated from sources: 2026"
         )
 
@@ -112,14 +149,14 @@ def chatbot(question):
                 "Last updated from sources: 2026"
             )
 
-    # RAG retrieval fallback
+    # RAG fallback
     result = search(question)
 
     answer = result[:300]
 
     return (
         f"{answer}...\n\n"
-        "Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund\n"
+        "Source: Official AMC / SEBI / AMFI page\n"
         "Last updated from sources: 2026"
     )
 
@@ -128,12 +165,12 @@ def chatbot(question):
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display previous messages
+# display previous messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# User input
+# user input
 prompt = st.chat_input("Ask a question about mutual funds")
 
 if prompt:
