@@ -55,13 +55,9 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 embeddings = model.encode(chunks)
 
 def search(question):
-
     q_embedding = model.encode([question])[0]
-
     scores = np.dot(embeddings, q_embedding)
-
     best_index = np.argmax(scores)
-
     return chunks[best_index]
 
 def chatbot(question):
@@ -71,8 +67,7 @@ def chatbot(question):
     for word in blocked_words:
         if word in question.lower():
             return (
-                "I provide factual information only and cannot give investment advice. "
-                "Please refer to the official scheme documents.\n\n"
+                "I provide factual information only and cannot give investment advice.\n\n"
                 "Source: https://www.amfiindia.com\n"
                 "Last updated from sources: 2026"
             )
@@ -87,34 +82,21 @@ def chatbot(question):
         "Last updated from sources: 2026"
     )
 
-with st.form("question_form", clear_on_submit=True):
-
 # Initialize chat history
 if "history" not in st.session_state:
     st.session_state.history = []
 
 # Input form
 with st.form("question_form", clear_on_submit=True):
-
-# Initialize chat history
-if "history" not in st.session_state:
-    st.session_state.history = []
-
-# Input form
-with st.form("question_form", clear_on_submit=True):
-
     question = st.text_input("Ask a question about mutual funds")
-
     submit = st.form_submit_button("Ask")
 
 # Process question
 if submit and question:
-
     answer = chatbot(question)
-
     st.session_state.history.append((question, answer))
 
-# Show conversation history
+# Display conversation history
 for q, a in st.session_state.history:
     st.write("**User:**", q)
     st.write("**Assistant:**", a)
