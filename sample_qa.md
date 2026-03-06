@@ -1,55 +1,35 @@
-# Sample Questions and Answers
+# Sample Queries and Answers
 
-## Q1
-What is the lock-in period for ELSS funds?
+## 1. What is the ELSS lock-in period?
 
-Answer:
-ELSS (Equity Linked Savings Scheme) mutual funds have a mandatory lock-in period of 3 years according to SEBI regulations.
+ELSS (Equity Linked Savings Scheme) mutual funds have a mandatory lock-in period of 3 years as per SEBI regulations.
 
 Source: https://www.sebi.gov.in
 
-Last updated from sources: 2026
 
+## 2. What is the expense ratio of SBI Bluechip Fund?
 
-## Q2
-What is the minimum SIP amount for SBI Bluechip Fund?
-
-Answer:
-The minimum SIP investment amount for SBI Bluechip Fund is generally ₹500 per installment.
+The expense ratio of SBI Bluechip Fund is approximately 0.94% for the direct plan according to the scheme factsheet.
 
 Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund
 
-Last updated from sources: 2026
+
+## 3. What is the exit load of SBI Bluechip Fund?
+
+SBI Bluechip Fund generally has an exit load of 1% if units are redeemed within 1 year from the date of allotment.
+
+Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund
 
 
-## Q3
-What is an expense ratio in mutual funds?
+## 4. What is the minimum SIP for SBI Bluechip Fund?
 
-Answer:
-Expense ratio represents the annual fee charged by the mutual fund for managing the investment portfolio.
+The minimum SIP amount for SBI Bluechip Fund is typically ₹500 per installment.
 
-Source: https://www.amfiindia.com/investor-corner/knowledge-center/expense-ratio
-
-Last updated from sources: 2026
+Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund
 
 
-## Q4
-What is exit load in mutual funds?
+## 5. How can I download capital gains statements?
 
-Answer:
-Exit load is a fee charged when an investor redeems mutual fund units before the specified holding period.
+Investors can download capital gains statements through registrar platforms like CAMS by logging in with their PAN or folio details.
 
-Source: https://www.amfiindia.com/investor-corner/knowledge-center/what-is-exit-load
-
-Last updated from sources: 2026
-
-
-## Q5
-How can I download capital gains statements?
-
-Answer:
-Investors can download capital gains statements through registrar platforms like CAMS or KFintech using their PAN and folio details.
-
-Source: https://www.camsonline.com/Investors/Statements
-
-Last updated from sources: 2026
+Source: https://www.camsonline.com/investors
