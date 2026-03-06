@@ -13,6 +13,17 @@ st.write("Example questions you can try:")
 st.write("• What is the expense ratio of SBI Bluechip Fund?")
 st.write("• What is the ELSS lock-in period?")
 st.write("• How can I download my capital gains statement?")
+st.write("• What is the exit load of SBI Bluechip Fund?")
+
+st.write("---")
+st.write("AMC Covered: SBI Mutual Fund")
+
+st.write("Schemes included:")
+st.write("- SBI Bluechip Fund (Large Cap)")
+st.write("- SBI Flexicap Fund")
+st.write("- SBI Long Term Equity Fund (ELSS)")
+
+st.write("Data sources: SBI Mutual Fund, AMFI India, SEBI and CAMS public pages.")
 
 urls = [
 "https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund",
@@ -55,7 +66,7 @@ def search(question):
 
 def chatbot(question):
 
-    blocked_words = ["buy", "sell", "invest", "recommend", "best", "should I"]
+  blocked_words = ["buy", "sell", "invest", "recommend", "best", "should i"]
 
     for word in blocked_words:
         if word.lower() in question.lower():
