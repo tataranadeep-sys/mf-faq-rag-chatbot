@@ -1,3 +1,4 @@
+![App Preview](preview.png)
 # RAG-based Mutual Fund FAQ Assistant
 
 This project is a **Retrieval-Augmented Generation (RAG) chatbot** that answers factual questions about mutual fund schemes using **official public sources only**.
