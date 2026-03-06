@@ -70,11 +70,11 @@ def chatbot(question):
 
     answer = result[:300]
 
-    return (
-        f"{answer}...\n\n"
-        "Source: Official AMC / SEBI / AMFI page\n"
-        "Last updated from sources: 2026"
-    )
+   return (
+    f"{answer}...\n\n"
+    "Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund\n"
+    "Last updated from sources: 2026"
+)
 
 question = st.text_input("Ask a question about mutual funds")
 
@@ -85,4 +85,5 @@ if question:
     st.write("Answer:")
     st.write(answer)
 
-    st.write("Source: Official AMC / SEBI / AMFI page")
+st.write("---")
+st.write("Disclaimer: This assistant provides factual information from official public sources only. It does not provide investment advice.")
