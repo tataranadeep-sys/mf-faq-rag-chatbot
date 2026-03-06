@@ -60,11 +60,20 @@ def search(question):
 
 def chatbot(question):
     
+def chatbot(question):
+
     # Handle common factual questions
     if "elss" in question.lower() and "lock" in question.lower():
         return (
             "ELSS (Equity Linked Savings Scheme) mutual funds have a mandatory lock-in period of 3 years as per SEBI regulations.\n\n"
             "Source: https://www.sebi.gov.in\n"
+            "Last updated from sources: 2026"
+        )
+
+    if "expense ratio" in question.lower() and "bluechip" in question.lower():
+        return (
+            "The expense ratio of SBI Bluechip Fund is around 0.94% for the direct plan, though it may change over time as updated in the scheme factsheet.\n\n"
+            "Source: https://www.sbimf.com/en-us/individual-schemes/sbi-bluechip-fund\n"
             "Last updated from sources: 2026"
         )
     blocked_words = ["buy", "sell", "invest", "recommend", "best", "should i"]
